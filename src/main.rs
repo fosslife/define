@@ -42,6 +42,10 @@ async fn main() -> Result<()> {
         .iter()
         .filter(|e| e.meta.id == args.word || e.meta.id.contains(":"))
         .collect::<Vec<&WelcomeElement>>();
+    if json.len() == 0 {
+        eprintln!("No results found");
+        exit(1);
+    }
     for def in json {
         println!("");
         println!(
